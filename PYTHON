@@ -1,0 +1,9 @@
+# 偽代碼 - 假設你在後端進行操作
+def check_appointment_limit(student_id, appointment_date):
+    # 查詢某學生在特定日期的預約數量
+    count = db.query('SELECT COUNT(*) FROM appointments WHERE student_id = ? AND appointment_date = ?', (student_id, appointment_date))
+    
+    if count >= 2:
+        return "你在同一天最多只能預約兩個時段。"
+    else:
+        return "可以繼續預約。"
