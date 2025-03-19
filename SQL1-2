@@ -1,0 +1,15 @@
+SELECT 
+    a.student_id,
+    COUNT(a.id) AS appointment_count,
+    CASE
+        WHEN COUNT(a.id) > 2 THEN 'Exceeded Limit'
+        ELSE 'Within Limit'
+    END AS status
+FROM 
+    appointments a
+WHERE 
+    a.appointment_date BETWEEN '2025-03-01' AND '2025-03-19'
+GROUP BY 
+    a.student_id
+HAVING 
+    COUNT(a.id) > 0;
