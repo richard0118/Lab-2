@@ -1,0 +1,11 @@
+-- 假設我們已經有一個 appointments 表
+CREATE TABLE appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL
+);
+
+-- 進行 ALTER TABLE，新增 UNIQUE constraint 確保每個學生在同一天最多只能預約兩個時段
+ALTER TABLE appointments
+ADD CONSTRAINT unique_student_day UNIQUE(student_id, appointment_date);
